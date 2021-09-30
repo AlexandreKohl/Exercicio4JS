@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Linguagem JavaScript</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Linguagem Java Script</h1>
+        <h4>Caracteristicas</h4>
+        <ul>
+            <li>Linguagem de Programação</li>
+            <li>Linguagem Interpretada</li>
+            <li>Originalmente foi criado como uma linguagem front-end, ou seja, ele era interpretado e executado no cliente, navegador</li>
+            <li>Atualmente ele tambem pode ser executado no Back-End através do NodeJS</li>
+            <li>É case-sesitive</li>
+            <li>Fracamente tipada, pode ser tipada se programa com TypScript</li>
+            <li>Sintaxe similar a Linguagem C, Java</li>
+            <li>Estruturada, Orientada a objetos</li>
+
+        </ul>
+        <button onclick="start()" class="btn btn-success"> Clique aqui para ver o poder do JavaScript </button>
+       
+        <hr>
+
+        <div class="card-columns">
+
+            <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Idade</h5>
+                   <form>
+                        <div class="form-group">
+                            <input id="inputNascimento" class="form-control" placeholder="Ano de Nascimento">
+                        </div>
+                        <div class="form-group"><br>
+                            <button type="button" onclick="calcularIdade()" class="btn btn-primary">Calcular</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <h5 id="h5Idade"></h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+               <h5 class="card-title">Criar Botões</h5>
+               <form>
+                    <div class="form-group">
+                        <button type="button" onclick="criarBotoes()"
+                            class="btn btn-primary">Criar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer" id=divBotoes>
+            </div>      
+        </div>
+      
+
+        <div class="card">
+            <div class="card-body">
+               <h5 class="card-title">Calculadora</h5>
+               <form>
+                    <div class="form-group">
+                        <input id="inputN1" class="form-control" placeholder="valor 1">
+                    </div>
+                    <div class="form-group">
+                        <input id="inputN2" class="form-control" placeholder="valor 2">
+                    </div>
+                    <div class="form-group"><br>
+                        <select class="form-control" id="selectOperacao">
+                            <option value="1">Adição</option>
+                            <option value="2">Subtração</option>
+                            <option value="3">Multiplicação</option>
+                            <option value="4">Divisão</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="calcular()" class="btn btn-primary">Calcular</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <h5 id="h5Resultado"></h5>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+    <script>
+
+        function start(){
+            var curso = 'Sistemas de Informação';
+            var disciplina = 'Fundamentos do Desenvolvimento Web';
+            console.log(curso);
+            alert(disciplina);           
+        }
+
+        function calcularIdade(){
+            let anoatual = 2021;
+            let anonascimento = parseInt ( document.getElementById ('inputNascimento').value);
+            
+            if(isNaN(anonascimento)){
+                document.getElementById('h5Idade').innerHTML = 'Ano Inválido';
+            }
+            else {
+                let idade = anoatual - anonascimento
+                document.getElementById('h5Idade').innerHTML = idade + ' Anos';
+                
+
+            }
+        }
+        
+        function criarBotoes () {
+            for (i = 0; i <10; i++) {
+                let b = document.createElement('button');
+                b.className = 'btn btn-danger';
+                b.style = 'margin: 3px';
+                b.innerHTML = i;
+
+                document.getElementById('divBotoes').appendChild(b);
+            }
+
+        }
+
+
+        function calcular(){
+            let n1 = parseInt ( document.getElementById ('inputN1').value);
+            let n2 = parseInt ( document.getElementById ('inputN2').value);
+            let op = parseInt ( document.getElementById ('selectOperacao').value);
+
+            if(isNaN(n1) || isNaN(n2) ){
+                document.getElementById('h5Resultado').innerHTML = 'Número Inválido(s)';
+            }
+            else {
+                let rs;
+
+                switch (op){
+                    case 1: 
+                        rs = n1 + n2;
+                        break;
+                    case 2: 
+                        rs = n1 - n2;
+                        break;
+                    case 3: 
+                        rs = n1 * n2;
+                        break;
+                    case 4: 
+                        rs = n1 / n2;
+                        break;
+                    
+                }
+                document.getElementById('h5Resultado').innerHTML = rs;
+                
+
+            }
+        }
+
+
+    </script>
+  </body>
+</html>
